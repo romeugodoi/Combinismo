@@ -18,7 +18,7 @@
     if (self) {
         // Monta as cartas do baralho
         for (NSString *naipe in [CartaDeJogo naipesValidos]){
-            for (NSUInteger numero = 1; numero < [CartaDeJogo numeroMaximo]; numero++) {
+            for (NSUInteger numero = 1; numero <= [CartaDeJogo numeroMaximo]; numero++) {
                 CartaDeJogo *carta = [[CartaDeJogo alloc] init];
                 carta.numero = numero;
                 carta.naipe = naipe;
