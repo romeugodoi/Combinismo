@@ -52,17 +52,43 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Yua-oI-idk"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrY-KD-cTK">
+                                <rect key="frame" x="323" y="324" width="21" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="bO6-VS-10k"/>
+                                    <constraint firstAttribute="height" constant="48" id="s4O-ew-PUf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyH-F9-3aW">
+                                <rect key="frame" x="257" y="228" width="21" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="bEC-2d-C0X"/>
+                                    <constraint firstAttribute="height" constant="48" id="rh1-gt-hcp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.3490196168422699" green="0.60392159223556519" blue="0.21176472306251526" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="k3D-ox-p3o" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="4QL-We-DXX"/>
+                            <constraint firstItem="DCW-4N-ZUj" firstAttribute="top" secondItem="eyH-F9-3aW" secondAttribute="bottom" constant="-42" id="CPe-M1-Sze"/>
+                            <constraint firstItem="CrY-KD-cTK" firstAttribute="top" secondItem="DCW-4N-ZUj" secondAttribute="bottom" constant="-42" id="J7D-Ge-XGQ"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="k3D-ox-p3o" secondAttribute="bottom" constant="20" id="NgP-hf-UoZ"/>
+                            <constraint firstItem="CrY-KD-cTK" firstAttribute="leading" secondItem="DCW-4N-ZUj" secondAttribute="trailing" constant="-21" id="a8k-kb-bnu"/>
                             <constraint firstAttribute="centerY" secondItem="DCW-4N-ZUj" secondAttribute="centerY" id="gfl-V6-Sg7"/>
+                            <constraint firstItem="DCW-4N-ZUj" firstAttribute="leading" secondItem="eyH-F9-3aW" secondAttribute="trailing" constant="-21" id="sHe-LG-rSd"/>
                             <constraint firstAttribute="centerX" secondItem="DCW-4N-ZUj" secondAttribute="centerX" constant="-0.5" id="xrS-Di-nMe"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cartaButton" destination="DCW-4N-ZUj" id="EMl-3X-nvS"/>
+                        <outlet property="conteudoInferior" destination="CrY-KD-cTK" id="ufc-qH-ORo"/>
+                        <outlet property="conteudoSuperior" destination="eyH-F9-3aW" id="ifh-ZI-esn"/>
                         <outlet property="tentativasLabel" destination="k3D-ox-p3o" id="F6K-UW-rdg"/>
                     </connections>
                 </viewController>

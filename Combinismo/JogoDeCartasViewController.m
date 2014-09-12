@@ -8,6 +8,7 @@
 
 #import "JogoDeCartasViewController.h"
 #import "BaralhoDeJogo.h"
+#import "CartaDeJogo.h"
 
 @interface JogoDeCartasViewController ()
 
@@ -18,15 +19,23 @@
 // View
 @property (weak, nonatomic) IBOutlet UIButton *cartaButton;
 @property (weak, nonatomic) IBOutlet UILabel *tentativasLabel;
+@property (weak, nonatomic) IBOutlet UILabel *conteudoSuperior;
+@property (weak, nonatomic) IBOutlet UILabel *conteudoInferior;
 
 @end
 
 @implementation JogoDeCartasViewController
 
+- (UILabel *) conteudoInferior
+{
+    // Faz a rotação de 180º no conteudo inferior
+    _conteudoInferior.transform = CGAffineTransformMakeRotation( 180 * M_PI  / 180 );
+    return _conteudoInferior;
+}
+
 - (BaralhoDeJogo *)baralhoJogo
 {
     if (!_baralhoJogo) _baralhoJogo = [BaralhoDeJogo new];
-    
     return _baralhoJogo;
 }
 
@@ -36,20 +45,28 @@
     label.text = [NSString stringWithFormat:@"Tentativas: %lu", self.tentativas];
 }
 
-- (IBAction)virarCarta:(UIButton *)carta
+- (IBAction)virarCarta:(UIButton *)cartaButton
 {
-    [carta setSelected: ![carta isSelected]];
+    [cartaButton setSelected: ![cartaButton isSelected]];
     
-    if ([carta isSelected]) {
+    if ([cartaButton isSelected]) {
         
         // Incrementa as tentativas
         [self incrementaTentativasLabel:self.tentativasLabel];
         
         // Seleciona carta
-        Carta *cartaSelecionada = [self.baralhoJogo tirarCartaAleatoria];
+        CartaDeJogo *cartaSelecionada = (CartaDeJogo *)[self.baralhoJogo tirarCartaAleatoria];
         
-        // Vira a carta
-        [carta setTitle:cartaSelecionada.conteudo forState:UIControlStateSelected];
+        // Muda o conteudo das labels superiores e inferiores
+        self.conteudoSuperior.text = self.conteudoInferior.text = cartaSelecionada.conteudo;
+        self.conteudoSuperior.hidden = self.conteudoInferior.hidden = NO;
+        
+        // Muda o naipe central
+        [cartaButton setTitle:cartaSelecionada.naipe forState:UIControlStateSelected];
+    } else {
+        // Volta o estado original das labels de conteudo
+        self.conteudoSuperior.text = self.conteudoInferior.text = @"";
+        self.conteudoSuperior.hidden = self.conteudoInferior.hidden = YES;
     }
 }
 

@@ -10,4 +10,6 @@
 
 @interface JogoDeCartasViewController : UIViewController
 
+- (IBAction)virarCarta:(UIButton *)cartaButton;
+
 @end
