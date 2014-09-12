@@ -34,7 +34,7 @@
                                     <constraint firstAttribute="width" constant="87" id="P9L-rb-tA2"/>
                                     <constraint firstAttribute="height" constant="132" id="upk-00-kpt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="">
                                     <color key="titleColor" red="0.72847616792929293" green="0.72847616792929293" blue="0.72847616792929293" alpha="1" colorSpace="calibratedRGB"/>
