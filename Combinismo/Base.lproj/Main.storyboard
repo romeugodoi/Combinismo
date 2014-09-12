@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Jogo De Cartas View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="JogoDeCartasViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tentativas: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3D-ox-p3o">
+                                <rect key="frame" x="16" y="559" width="154" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="FEh-KI-RPj"/>
+                                    <constraint firstAttribute="height" constant="21" id="tWv-11-rL7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCW-4N-ZUj">
+                                <rect key="frame" x="257" y="234" width="87" height="132"/>
+                                <color key="backgroundColor" red="0.95054056186868685" green="0.95054056186868685" blue="0.95054056186868685" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="87" id="P9L-rb-tA2"/>
+                                    <constraint firstAttribute="height" constant="132" id="upk-00-kpt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="">
+                                    <color key="titleColor" red="0.72847616792929293" green="0.72847616792929293" blue="0.72847616792929293" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Yua-oI-idk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.3490196168422699" green="0.60392159223556519" blue="0.21176472306251526" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="k3D-ox-p3o" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="4QL-We-DXX"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="k3D-ox-p3o" secondAttribute="bottom" constant="20" id="NgP-hf-UoZ"/>
+                            <constraint firstAttribute="centerY" secondItem="DCW-4N-ZUj" secondAttribute="centerY" id="gfl-V6-Sg7"/>
+                            <constraint firstAttribute="centerX" secondItem="DCW-4N-ZUj" secondAttribute="centerX" constant="-0.5" id="xrS-Di-nMe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cartaButton" destination="DCW-4N-ZUj" id="EMl-3X-nvS"/>
+                        <outlet property="tentativasLabel" destination="k3D-ox-p3o" id="F6K-UW-rdg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="242"/>
+        </scene>
+    </scenes>
+</document>
