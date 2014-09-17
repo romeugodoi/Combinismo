@@ -1,46 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Jogo De Cartas View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="JogoDeCartasViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tentativas: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3D-ox-p3o">
-                                <rect key="frame" x="16" y="559" width="154" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="154" id="FEh-KI-RPj"/>
-                                    <constraint firstAttribute="height" constant="21" id="tWv-11-rL7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCW-4N-ZUj">
-                                <rect key="frame" x="257" y="234" width="87" height="132"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DCW-4N-ZUj">
+                                <rect key="frame" x="5" y="20" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.95054056186868685" green="0.95054056186868685" blue="0.95054056186868685" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="87" id="P9L-rb-tA2"/>
-                                    <constraint firstAttribute="height" constant="132" id="upk-00-kpt"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <state key="normal" title="">
+                                <state key="normal" backgroundImage="cartaVerso">
                                     <color key="titleColor" red="0.72847616792929293" green="0.72847616792929293" blue="0.72847616792929293" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected">
+                                <state key="selected" backgroundImage="cartaFrente">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -52,49 +34,285 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Yua-oI-idk"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrY-KD-cTK">
-                                <rect key="frame" x="323" y="324" width="21" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="21" id="bO6-VS-10k"/>
-                                    <constraint firstAttribute="height" constant="48" id="s4O-ew-PUf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyH-F9-3aW">
-                                <rect key="frame" x="257" y="228" width="21" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="21" id="bEC-2d-C0X"/>
-                                    <constraint firstAttribute="height" constant="48" id="rh1-gt-hcp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="klO-K7-fvS">
+                                <rect key="frame" x="165" y="20" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="suY-L3-GmR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L84-za-xL6">
+                                <rect key="frame" x="245" y="20" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jyM-Nv-gzV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hnp-jq-YXI">
+                                <rect key="frame" x="5" y="128" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ebk-xV-WKb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PkN-cX-EVl">
+                                <rect key="frame" x="85" y="128" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qaw-ys-mNW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VHp-gl-oH1">
+                                <rect key="frame" x="165" y="128" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="b6b-g6-Cfx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q1Q-ub-PaG">
+                                <rect key="frame" x="245" y="128" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4Bf-Gz-aVe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TDM-DI-wjp">
+                                <rect key="frame" x="5" y="236" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cUI-2u-zYz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DZz-2Z-A3D">
+                                <rect key="frame" x="85" y="236" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WGx-vJ-5RW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EYF-ux-EAI">
+                                <rect key="frame" x="165" y="236" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="IbJ-zv-8bC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bSg-El-uj6">
+                                <rect key="frame" x="245" y="236" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Tss-MP-1pl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f3j-3h-qMT">
+                                <rect key="frame" x="85" y="20" width="71" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95054056190000003" green="0.95054056190000003" blue="0.95054056190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="cartaVerso">
+                                    <color key="titleColor" red="0.72847616790000003" green="0.72847616790000003" blue="0.72847616790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="cartaFrente">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="d5c-R9-k2Y"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pontuação: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z1s-kC-IYm">
+                                <rect key="frame" x="16" y="527" width="102" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.3490196168422699" green="0.60392159223556519" blue="0.21176472306251526" alpha="1" colorSpace="deviceRGB"/>
-                        <constraints>
-                            <constraint firstItem="k3D-ox-p3o" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="4QL-We-DXX"/>
-                            <constraint firstItem="DCW-4N-ZUj" firstAttribute="top" secondItem="eyH-F9-3aW" secondAttribute="bottom" constant="-42" id="CPe-M1-Sze"/>
-                            <constraint firstItem="CrY-KD-cTK" firstAttribute="top" secondItem="DCW-4N-ZUj" secondAttribute="bottom" constant="-42" id="J7D-Ge-XGQ"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="k3D-ox-p3o" secondAttribute="bottom" constant="20" id="NgP-hf-UoZ"/>
-                            <constraint firstItem="CrY-KD-cTK" firstAttribute="leading" secondItem="DCW-4N-ZUj" secondAttribute="trailing" constant="-21" id="a8k-kb-bnu"/>
-                            <constraint firstAttribute="centerY" secondItem="DCW-4N-ZUj" secondAttribute="centerY" id="gfl-V6-Sg7"/>
-                            <constraint firstItem="DCW-4N-ZUj" firstAttribute="leading" secondItem="eyH-F9-3aW" secondAttribute="trailing" constant="-21" id="sHe-LG-rSd"/>
-                            <constraint firstAttribute="centerX" secondItem="DCW-4N-ZUj" secondAttribute="centerX" constant="-0.5" id="xrS-Di-nMe"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="cartaButton" destination="DCW-4N-ZUj" id="EMl-3X-nvS"/>
-                        <outlet property="conteudoInferior" destination="CrY-KD-cTK" id="ufc-qH-ORo"/>
-                        <outlet property="conteudoSuperior" destination="eyH-F9-3aW" id="ifh-ZI-esn"/>
-                        <outlet property="tentativasLabel" destination="k3D-ox-p3o" id="F6K-UW-rdg"/>
+                        <outlet property="pontuacaoLabel" destination="z1s-kC-IYm" id="J2U-Re-3mu"/>
+                        <outletCollection property="cartasButton" destination="L84-za-xL6" id="pD4-9q-LJq"/>
+                        <outletCollection property="cartasButton" destination="bSg-El-uj6" id="7Kh-3C-Rif"/>
+                        <outletCollection property="cartasButton" destination="TDM-DI-wjp" id="zII-Od-pke"/>
+                        <outletCollection property="cartasButton" destination="klO-K7-fvS" id="E3r-rI-Zfs"/>
+                        <outletCollection property="cartasButton" destination="PkN-cX-EVl" id="sgX-Rs-Fff"/>
+                        <outletCollection property="cartasButton" destination="DCW-4N-ZUj" id="nqX-UH-W8W"/>
+                        <outletCollection property="cartasButton" destination="Q1Q-ub-PaG" id="5Wv-C7-wco"/>
+                        <outletCollection property="cartasButton" destination="EYF-ux-EAI" id="vyf-4w-vm5"/>
+                        <outletCollection property="cartasButton" destination="DZz-2Z-A3D" id="mMW-WU-lC0"/>
+                        <outletCollection property="cartasButton" destination="Hnp-jq-YXI" id="g5N-dL-XFk"/>
+                        <outletCollection property="cartasButton" destination="VHp-gl-oH1" id="9OP-v6-kjf"/>
+                        <outletCollection property="cartasButton" destination="f3j-3h-qMT" id="cmZ-qX-b1H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="242"/>
+            <point key="canvasLocation" x="10.666666666666666" y="229.09333333333333"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cartaFrente" width="71" height="100"/>
+        <image name="cartaVerso" width="71" height="100"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

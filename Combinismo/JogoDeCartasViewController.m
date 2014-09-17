@@ -7,66 +7,64 @@
 //
 
 #import "JogoDeCartasViewController.h"
+#import "JogoDeCombinacaoDeCartas.h"
 #import "BaralhoDeJogo.h"
-#import "CartaDeJogo.h"
 
 @interface JogoDeCartasViewController ()
 
 // Model
-@property (nonatomic) NSUInteger tentativas;
-@property (strong, nonatomic) BaralhoDeJogo *baralhoJogo;
+@property (strong, nonatomic) JogoDeCombinacaoDeCartas *jogo;
 
 // View
-@property (weak, nonatomic) IBOutlet UIButton *cartaButton;
-@property (weak, nonatomic) IBOutlet UILabel *tentativasLabel;
-@property (weak, nonatomic) IBOutlet UILabel *conteudoSuperior;
-@property (weak, nonatomic) IBOutlet UILabel *conteudoInferior;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cartasButton;
+@property (weak, nonatomic) IBOutlet UILabel *pontuacaoLabel;
 
 @end
 
 @implementation JogoDeCartasViewController
 
-- (UILabel *) conteudoInferior
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    // Faz a rotação de 180º no conteudo inferior
-    _conteudoInferior.transform = CGAffineTransformMakeRotation( 180 * M_PI  / 180 );
-    return _conteudoInferior;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    self.jogo = [[JogoDeCombinacaoDeCartas alloc] initComContagemDeCartas:self.cartasButton.count usandoBaralho:[BaralhoDeJogo new]];
+    
+    return self;
 }
 
-- (BaralhoDeJogo *)baralhoJogo
+- (JogoDeCombinacaoDeCartas *)jogo
 {
-    if (!_baralhoJogo) _baralhoJogo = [BaralhoDeJogo new];
-    return _baralhoJogo;
-}
-
-- (void)incrementaTentativasLabel:(UILabel *)label
-{
-    self.tentativas++;
-    label.text = [NSString stringWithFormat:@"Tentativas: %lu", self.tentativas];
+    if (!_jogo) _jogo = [[JogoDeCombinacaoDeCartas alloc] initComContagemDeCartas:self.cartasButton.count usandoBaralho:[BaralhoDeJogo new]];
+    
+    return _jogo;
 }
 
 - (IBAction)virarCarta:(UIButton *)cartaButton
 {
-    [cartaButton setSelected: ![cartaButton isSelected]];
+    NSUInteger index = [self.cartasButton indexOfObject:cartaButton];
     
-    if ([cartaButton isSelected]) {
+    [self.jogo escolherCartaNoIndex:index];
+    
+    [self atualizarUI];
+}
+
+- (void)atualizarUI
+{
+    for (NSUInteger i=0; i < self.cartasButton.count; i++) {
         
-        // Incrementa as tentativas
-        [self incrementaTentativasLabel:self.tentativasLabel];
+        Carta *carta = [self.jogo cartaNoIndex:i];
+//        UIButton *cartaButton = self.cartasButton[i];
         
-        // Seleciona carta
-        CartaDeJogo *cartaSelecionada = (CartaDeJogo *)[self.baralhoJogo tirarCartaAleatoria];
+        if (carta.isEscolhida) {
+            
+            [self.cartasButton[i] setBackgroundImage:[UIImage imageNamed:@"cartaFrente"] forState:UIControlStateNormal];
+            [self.cartasButton[i] setTitle:carta.conteudo forState:UIControlStateNormal];
+        }
+        else {
+            [self.cartasButton[i] setBackgroundImage:[UIImage imageNamed:@"cartaVerso"] forState:UIControlStateNormal];
+            [self.cartasButton[i] setTitle:@"" forState:UIControlStateNormal];
+        }
         
-        // Muda o conteudo das labels superiores e inferiores
-        self.conteudoSuperior.text = self.conteudoInferior.text = cartaSelecionada.conteudo;
-        self.conteudoSuperior.hidden = self.conteudoInferior.hidden = NO;
-        
-        // Muda o naipe central
-        [cartaButton setTitle:cartaSelecionada.naipe forState:UIControlStateSelected];
-    } else {
-        // Volta o estado original das labels de conteudo
-        self.conteudoSuperior.text = self.conteudoInferior.text = @"";
-        self.conteudoSuperior.hidden = self.conteudoInferior.hidden = YES;
     }
 }
 
