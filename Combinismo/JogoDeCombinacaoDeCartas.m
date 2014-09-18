@@ -11,7 +11,7 @@
 @interface JogoDeCombinacaoDeCartas()
 
 @property (strong, nonatomic) NSMutableArray *cartas;
-@property (nonatomic, readwrite) NSUInteger pontuacao;
+@property (nonatomic, readwrite) NSInteger pontuacao;
 
 @end
 
@@ -21,6 +21,8 @@
 static const int BONUS_POR_COMBINACAO = 4;
 static const int PENALIDADE_POR_NAO_COMBINAR = 2;
 static const int CUSTO_PARA_ESCOLHER = 1;
+
+#pragma mark - Inicializadores Designados
 
 - (instancetype)init
 {
@@ -48,12 +50,15 @@ static const int CUSTO_PARA_ESCOLHER = 1;
     return self;
 }
 
+#pragma mark - Lazy Instanciations
+
 - (NSMutableArray *)cartas
 {
     if (!_cartas) _cartas = [NSMutableArray new];
-    
     return _cartas;
 }
+
+#pragma mark - Métodos de Instância
 
 - (void) escolherCartaNoIndex:(NSUInteger)index
 {
@@ -102,7 +107,6 @@ static const int CUSTO_PARA_ESCOLHER = 1;
             self.pontuacao -= CUSTO_PARA_ESCOLHER;
             carta.escolhida = YES;
         }
-        
     }
 }
 
@@ -110,6 +114,5 @@ static const int CUSTO_PARA_ESCOLHER = 1;
 {
     return index < self.cartas.count ? self.cartas[index] : nil;
 }
-
 
 @end

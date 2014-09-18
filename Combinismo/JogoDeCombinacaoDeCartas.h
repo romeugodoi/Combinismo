@@ -12,7 +12,7 @@
 
 @interface JogoDeCombinacaoDeCartas : NSObject
 
-@property (nonatomic, readonly) NSUInteger pontuacao;
+@property (nonatomic, readonly) NSInteger pontuacao;
 
 // inicializador que deve ser utilizado! (Designated initializer)
 - (instancetype) initComContagemDeCartas:(NSUInteger)contagem usandoBaralho:(Baralho *)baralho;

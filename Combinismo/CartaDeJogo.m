@@ -17,6 +17,23 @@
     return [numerosStrings[self.numero] stringByAppendingString:self.naipe];
 }
 
+- (int)combinar:(NSArray *)outrasCartas
+{
+    int score = 0;
+    
+    // 2 | 4
+    for (CartaDeJogo *carta in outrasCartas) {
+        if ([carta.naipe isEqualToString:self.naipe]) {
+            score = 2;
+        }
+        else if (carta.numero == self.numero) {
+            score = 4;
+        }
+    }
+    
+    return score;
+}
+
 @synthesize naipe = _naipe;
 
 - (void)setNaipe:(NSString *)naipe
