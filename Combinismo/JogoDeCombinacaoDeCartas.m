@@ -15,6 +15,7 @@
 
 @end
 
+
 @implementation JogoDeCombinacaoDeCartas
 
 // Constantes de Configurações
@@ -58,8 +59,13 @@ static const int CUSTO_PARA_ESCOLHER = 1;
     return _cartas;
 }
 
-#pragma mark - Métodos de Instância
+#pragma mark - Métodos Privados
 
+/**
+ *  Escolhe uma carta em uma determinada posição da lista de cartas
+ *
+ *  @param index Posição da Carta
+ */
 - (void) escolherCartaNoIndex:(NSUInteger)index
 {
     Carta *carta = [self cartaNoIndex:index];

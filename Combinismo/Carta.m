@@ -10,10 +10,12 @@
 
 @implementation Carta
 
-// combinar: vai retornar uma pontuação nos
-// dizendo o quão boa é a combinação.
-// 0 significa nenhuma combinação
-// > 0 significa melhores combinações
+//
+//  combinar: Vai retornar uma pontuação nos
+//  dizendo o quão boa é a combinação.
+//  0 significa nenhuma combinação
+//  > 0 significa melhores combinações
+//
 - (int) combinar:(NSArray *)outrasCartas
 {
     int score = 0;

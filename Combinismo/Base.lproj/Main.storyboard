@@ -257,8 +257,8 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="d5c-R9-k2Y"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pontuação: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1s-kC-IYm">
-                                <rect key="frame" x="16" y="527" width="102" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pontuação: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z1s-kC-IYm">
+                                <rect key="frame" x="16" y="527" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -277,10 +277,8 @@
                             <constraint firstItem="Hnp-jq-YXI" firstAttribute="leading" secondItem="TDM-DI-wjp" secondAttribute="leading" id="J41-Op-RxL"/>
                             <constraint firstItem="EYF-ux-EAI" firstAttribute="leading" secondItem="VHp-gl-oH1" secondAttribute="leading" id="K6S-1K-51T"/>
                             <constraint firstItem="DCW-4N-ZUj" firstAttribute="top" secondItem="f3j-3h-qMT" secondAttribute="top" id="Kie-Xu-sYf"/>
-                            <constraint firstAttribute="bottom" secondItem="z1s-kC-IYm" secondAttribute="bottom" constant="20" symbolic="YES" id="MzI-37-JCm"/>
                             <constraint firstItem="VHp-gl-oH1" firstAttribute="top" secondItem="PkN-cX-EVl" secondAttribute="top" id="QN3-cx-hBv"/>
                             <constraint firstItem="PkN-cX-EVl" firstAttribute="leading" secondItem="f3j-3h-qMT" secondAttribute="leading" id="QVq-m5-lL7"/>
-                            <constraint firstItem="z1s-kC-IYm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="WxG-R8-em5"/>
                             <constraint firstItem="bSg-El-uj6" firstAttribute="leading" secondItem="Q1Q-ub-PaG" secondAttribute="leading" id="Wyr-JY-5N4"/>
                             <constraint firstItem="PkN-cX-EVl" firstAttribute="leading" secondItem="DZz-2Z-A3D" secondAttribute="leading" id="YD7-yH-dDt"/>
                             <constraint firstItem="DCW-4N-ZUj" firstAttribute="leading" secondItem="Hnp-jq-YXI" secondAttribute="leading" id="a42-9a-aNs"/>
@@ -311,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10.666666666666666" y="229.09333333333331"/>
+            <point key="canvasLocation" x="10" y="229"/>
         </scene>
     </scenes>
     <resources>
