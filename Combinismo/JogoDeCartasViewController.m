@@ -18,6 +18,7 @@
 // View
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cartasButton;
 @property (weak, nonatomic) IBOutlet UILabel *pontuacaoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *notificacaoLabel;
 
 @end
 
@@ -76,7 +77,23 @@
     }
     
     // Atualiza a pontuação
-    self.pontuacaoLabel.text = [NSString stringWithFormat:@"Pontuação: %ld", self.jogo.pontuacao];
+    self.pontuacaoLabel.text = [NSString stringWithFormat:@"Pontuação: %ld", (long)self.jogo.pontuacao];
+}
+
+- (void)notificacaoRecebida:(NSNotification *)notificacao
+{
+    Carta *cartaA = notificacao.userInfo[@"cartaA"];
+    Carta *cartaB = notificacao.userInfo[@"cartaB"];
+    NSNumber *saldo = notificacao.userInfo[@"saldo"];
+    
+    if (saldo.intValue < 0) {
+        self.notificacaoLabel.textColor = [UIColor blackColor];
+        self.notificacaoLabel.text = [NSString stringWithFormat:@"As cartas %@ e %@ não combinam!", cartaA.conteudo, cartaB.conteudo];
+    }
+    else {
+        self.notificacaoLabel.textColor = [UIColor whiteColor];
+        self.notificacaoLabel.text = [NSString stringWithFormat:@"As cartas %@ e %@ combinam!", cartaA.conteudo, cartaB.conteudo];
+    }
 }
 
 #pragma mark - Ciclos de vida do Controller
@@ -85,10 +102,17 @@
 {
     [super viewDidLoad];
     
+    // Registando as Notificações do Jogo
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(notificacaoRecebida:)
+               name:JogoDeCombinacaoDeCartasCartasCombinadasNotification
+             object:self.jogo];
+    
     // Mostramos qual foi a última pontuação do usuário
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSInteger ultimaPontuacao = [ud integerForKey:@"ultimaPontuacao"];
-    self.pontuacaoLabel.text = [NSString stringWithFormat:@"Em seu último jogo, você fez %ld pontos!.", ultimaPontuacao];
+    self.pontuacaoLabel.text = [NSString stringWithFormat:@"Em seu último jogo, você fez %ld pontos!.", (long)ultimaPontuacao];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

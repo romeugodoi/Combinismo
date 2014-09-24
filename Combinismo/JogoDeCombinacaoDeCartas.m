@@ -23,6 +23,10 @@ static const int BONUS_POR_COMBINACAO = 4;
 static const int PENALIDADE_POR_NAO_COMBINAR = 2;
 static const int CUSTO_PARA_ESCOLHER = 1;
 
+// Canais de Notificação
+NSString * const JogoDeCombinacaoDeCartasCartasCombinadasNotification = @"br.com.cocoaheads.JogoDeCombinacaoDeCartasCartasCombinadasNotification";
+
+
 #pragma mark - Inicializadores Designados
 
 - (instancetype)init
@@ -66,12 +70,14 @@ static const int CUSTO_PARA_ESCOLHER = 1;
  *
  *  @param index Posição da Carta
  */
-- (void) escolherCartaNoIndex:(NSUInteger)index
+- (void)escolherCartaNoIndex:(NSUInteger)index
 {
     Carta *carta = [self cartaNoIndex:index];
     
     // Não faz sentido para cartas já foi combinadas
     if (!carta.isCombinada) {
+        
+        NSInteger pontuacaoAnterior = self.pontuacao;
         
         // Se a carta já estiver escolhida, volta ela para nao escolhida.
         if (carta.isEscolhida) {
@@ -106,6 +112,9 @@ static const int CUSTO_PARA_ESCOLHER = 1;
                         // Volta a outra carta para não escolhida
                         outraCarta.escolhida = NO;
                     }
+                    
+                    NSNumber *saldo = [NSNumber numberWithInteger:( self.pontuacao - pontuacaoAnterior )];
+                    [self postarNotificacaoDeCombinacaoDaCarta:carta comACarta:outraCarta comSaldo:saldo];
                 }
             }
             
@@ -116,9 +125,17 @@ static const int CUSTO_PARA_ESCOLHER = 1;
     }
 }
 
-- (Carta *) cartaNoIndex:(NSUInteger)index
+- (Carta *)cartaNoIndex:(NSUInteger)index
 {
     return index < self.cartas.count ? self.cartas[index] : nil;
+}
+
+- (void)postarNotificacaoDeCombinacaoDaCarta:(Carta *)cartaA comACarta:(Carta *)cartaB comSaldo:(NSNumber *)saldo
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:JogoDeCombinacaoDeCartasCartasCombinadasNotification
+                      object:self
+                    userInfo:@{ @"cartaA": cartaA, @"cartaB": cartaB, @"saldo": saldo }];
 }
 
 @end

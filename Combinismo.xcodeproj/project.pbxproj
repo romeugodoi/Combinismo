@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A36A089619D3557A00F2B5C3 /* CartaView.m in Sources */ = {isa = PBXBuildFile; fileRef = A36A089519D3557A00F2B5C3 /* CartaView.m */; };
 		A3E354CB19C9D20A00DEF8F0 /* JogoDeCombinacaoDeCartas.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E354CA19C9D20A00DEF8F0 /* JogoDeCombinacaoDeCartas.m */; };
 		A3FC7FC819C1D263009E5336 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FC7FC719C1D263009E5336 /* main.m */; };
 		A3FC7FCB19C1D263009E5336 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FC7FCA19C1D263009E5336 /* AppDelegate.m */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A36A089419D3557A00F2B5C3 /* CartaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartaView.h; sourceTree = "<group>"; };
+		A36A089519D3557A00F2B5C3 /* CartaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartaView.m; sourceTree = "<group>"; };
 		A3E354C919C9D20A00DEF8F0 /* JogoDeCombinacaoDeCartas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogoDeCombinacaoDeCartas.h; sourceTree = "<group>"; };
 		A3E354CA19C9D20A00DEF8F0 /* JogoDeCombinacaoDeCartas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogoDeCombinacaoDeCartas.m; sourceTree = "<group>"; };
 		A3FC7FC219C1D263009E5336 /* Combinismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Combinismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +120,8 @@
 				A3FC7FCF19C1D263009E5336 /* Main.storyboard */,
 				A3FC7FF719C1E50F009E5336 /* JogoDeCartasViewController.h */,
 				A3FC7FF819C1E50F009E5336 /* JogoDeCartasViewController.m */,
+				A36A089419D3557A00F2B5C3 /* CartaView.h */,
+				A36A089519D3557A00F2B5C3 /* CartaView.m */,
 				A3730C4219C726A4000EDB06 /* Model */,
 			);
 			path = Combinismo;
@@ -257,6 +262,7 @@
 				A3FC7FED19C1D3B9009E5336 /* Carta.m in Sources */,
 				A3FC7FF919C1E50F009E5336 /* JogoDeCartasViewController.m in Sources */,
 				A3FC7FF019C1D825009E5336 /* Baralho.m in Sources */,
+				A36A089619D3557A00F2B5C3 /* CartaView.m in Sources */,
 				A3FC7FCB19C1D263009E5336 /* AppDelegate.m in Sources */,
 				A3FC7FF619C1E0F7009E5336 /* BaralhoDeJogo.m in Sources */,
 				A3FC7FC819C1D263009E5336 /* main.m in Sources */,

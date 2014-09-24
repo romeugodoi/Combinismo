@@ -262,6 +262,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwu-NV-egB">
+                                <rect key="frame" x="5" y="411" width="311" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -292,6 +298,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="notificacaoLabel" destination="rwu-NV-egB" id="IdA-XD-CrF"/>
                         <outlet property="pontuacaoLabel" destination="z1s-kC-IYm" id="J2U-Re-3mu"/>
                         <outletCollection property="cartasButton" destination="L84-za-xL6" id="pD4-9q-LJq"/>
                         <outletCollection property="cartasButton" destination="bSg-El-uj6" id="7Kh-3C-Rif"/>

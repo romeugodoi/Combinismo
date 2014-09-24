@@ -14,10 +14,14 @@
 
 @property (nonatomic, readonly) NSInteger pontuacao;
 
+// Canais de Notificação
+extern NSString * const JogoDeCombinacaoDeCartasCartasCombinadasNotification;
+
 // inicializador que deve ser utilizado! (Designated initializer)
 - (instancetype) initComContagemDeCartas:(NSUInteger)contagem usandoBaralho:(Baralho *)baralho;
 
 - (void) escolherCartaNoIndex:(NSUInteger)index;
 - (Carta *) cartaNoIndex:(NSUInteger)index;
+- (void)postarNotificacaoDeCombinacaoDaCarta:(Carta *)cartaA comACarta:(Carta *)cartaB comSaldo:(NSNumber *)saldo;
 
 @end
