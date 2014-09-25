@@ -9,6 +9,7 @@
 #import "JogoDeCartasViewController.h"
 #import "JogoDeCombinacaoDeCartas.h"
 #import "BaralhoDeJogo.h"
+#import "CartaDeJogo.h"
 
 @interface JogoDeCartasViewController ()
 
@@ -16,9 +17,10 @@
 @property (strong, nonatomic) JogoDeCombinacaoDeCartas *jogo;
 
 // View
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cartasButton;
+@property (strong, nonatomic) IBOutletCollection(CartaView) NSArray *cartasView;
 @property (weak, nonatomic) IBOutlet UILabel *pontuacaoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *notificacaoLabel;
+@property (weak, nonatomic) IBOutlet UIButton *reiniciarJogoButton;
 
 @end
 
@@ -28,7 +30,7 @@
 
 - (JogoDeCombinacaoDeCartas *)jogo
 {
-    if (!_jogo) _jogo = [[JogoDeCombinacaoDeCartas alloc] initComContagemDeCartas:self.cartasButton.count
+    if (!_jogo) _jogo = [[JogoDeCombinacaoDeCartas alloc] initComContagemDeCartas:self.cartasView.count
                                                                     usandoBaralho:[BaralhoDeJogo new]];
     return _jogo;
 }
@@ -38,13 +40,23 @@
 /**
  *  Vira a carta, e pede para atualizar a UI
  *
- *  @param cartaButton Carta que o usuário escolheu
+ *  @param cartaView Carta que o usuário escolheu
  */
-- (IBAction)virarCarta:(UIButton *)cartaButton
+- (IBAction)virarCarta:(CartaView *)cartaView
 {
-    NSUInteger cartaIndex = [self.cartasButton indexOfObject:cartaButton];
+    NSUInteger cartaIndex = [self.cartasView indexOfObject:cartaView];
     
     [self.jogo escolherCartaNoIndex:cartaIndex];
+    self.reiniciarJogoButton.hidden = NO;
+    
+    [self atualizarUI];
+}
+
+- (IBAction)reiniciarJogo:(UIButton *)sender
+{
+    self.jogo= nil;
+    self.pontuacaoLabel.text = self.notificacaoLabel.text = @"";
+    self.reiniciarJogoButton.hidden = YES;
     
     [self atualizarUI];
 }
@@ -54,30 +66,22 @@
  */
 - (void)atualizarUI
 {
-    for (NSUInteger i=0; i < self.cartasButton.count; i++) {
+    for (NSUInteger i=0; i < self.cartasView.count; i++) {
         
-        Carta *carta = [self.jogo cartaNoIndex:i];
-        UIButton *cartaButton = self.cartasButton[i];
+        CartaDeJogo *carta = (CartaDeJogo *) [self.jogo cartaNoIndex:i];
+        CartaView *cartaView = self.cartasView[i];
         
-        if (carta.isEscolhida) {
-            
-            [cartaButton setBackgroundImage:[UIImage imageNamed:@"cartaFrente"] forState:UIControlStateNormal];
-            [cartaButton setTitle:carta.conteudo forState:UIControlStateNormal];
-            
-            // A carta já foi combinada, precisamos desabilitá-la
-            if (carta.isCombinada) {
-                cartaButton.enabled = NO;
-            }
-        }
-        else {
-            // Viramos a carta para o verso novamente
-            [cartaButton setBackgroundImage:[UIImage imageNamed:@"cartaVerso"] forState:UIControlStateNormal];
-            [cartaButton setTitle:@"" forState:UIControlStateNormal];
-        }
+        cartaView.ativa = carta.isEscolhida;
+        cartaView.numero = [CartaDeJogo numerosString][carta.numero];
+        cartaView.naipe = carta.naipe;
+        
+        
+        // A carta já foi combinada, precisamos desabilitá-la
+        cartaView.enabled = !(carta.isEscolhida && carta.isCombinada);
     }
     
     // Atualiza a pontuação
-    self.pontuacaoLabel.text = [NSString stringWithFormat:@"Pontuação: %ld", (long)self.jogo.pontuacao];
+    self.pontuacaoLabel.text = [NSString stringWithFormat:@"Pontuação: %lu", self.jogo.pontuacao];
 }
 
 - (void)notificacaoRecebida:(NSNotification *)notificacao
@@ -98,9 +102,9 @@
 
 #pragma mark - Ciclos de vida do Controller
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     
     // Registando as Notificações do Jogo
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -112,7 +116,7 @@
     // Mostramos qual foi a última pontuação do usuário
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSInteger ultimaPontuacao = [ud integerForKey:@"ultimaPontuacao"];
-    self.pontuacaoLabel.text = [NSString stringWithFormat:@"Em seu último jogo, você fez %ld pontos!.", (long)ultimaPontuacao];
+    self.notificacaoLabel.text = [NSString stringWithFormat:@"Em seu último jogo, você fez %lu pontos!", ultimaPontuacao];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

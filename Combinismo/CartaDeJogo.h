@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *naipe;
 @property (nonatomic) NSUInteger numero;
 
++ (NSArray *)numerosString;
 + (NSArray *)naipesValidos;
 + (NSUInteger)numeroMaximo;
 

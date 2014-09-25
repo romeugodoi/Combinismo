@@ -63,7 +63,7 @@
     return [CartaDeJogo numerosString].count - 1;
 }
 
-- (void)setNunmero:(NSUInteger)numero
+- (void)setNumero:(NSUInteger)numero
 {
     if (numero <= [CartaDeJogo numeroMaximo]) {
         _numero = numero;

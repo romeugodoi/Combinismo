@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CartaView.h"
 
 @interface JogoDeCartasViewController : UIViewController
 
-- (IBAction)virarCarta:(UIButton *)cartaButton;
+- (IBAction)virarCarta:(CartaView *)cartaView;
 
 @end
