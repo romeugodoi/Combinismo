@@ -29,72 +29,109 @@
                             </label>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IaK-kw-tG2" customClass="CartaView">
                                 <rect key="frame" x="6" y="28" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="f4L-uU-b5R"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfI-Np-El0" customClass="CartaView">
                                 <rect key="frame" x="85" y="28" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Zfc-bb-2JF"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q63-iA-SDk" customClass="CartaView">
                                 <rect key="frame" x="164" y="28" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4mg-Bt-ZsT"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zIC-yQ-G8n" customClass="CartaView">
                                 <rect key="frame" x="243" y="28" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="ativa" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ea6-Hx-FxI"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q33-7c-HhT" customClass="CartaView">
                                 <rect key="frame" x="5" y="136" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="S7C-JY-bl8"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0d-md-s0T" customClass="CartaView">
                                 <rect key="frame" x="84" y="136" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Iz2-Hb-Pt0"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jMU-gP-Kw2" customClass="CartaView">
                                 <rect key="frame" x="163" y="136" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yzE-x5-Sot"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22J-Ek-Giy" customClass="CartaView">
                                 <rect key="frame" x="242" y="136" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dug-yI-FQt"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KLI-Hk-qFc" customClass="CartaView">
                                 <rect key="frame" x="6" y="244" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9zT-0c-CvG"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivp-mM-k20" customClass="CartaView">
                                 <rect key="frame" x="85" y="244" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7yp-P3-GVA"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16p-Ae-vW9" customClass="CartaView">
                                 <rect key="frame" x="164" y="244" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="AZT-F3-ss6"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFa-SR-Gbp" customClass="CartaView">
                                 <rect key="frame" x="243" y="244" width="71" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PxQ-mu-mBS"/>
                                 </connections>
@@ -136,6 +173,9 @@
             <point key="canvasLocation" x="10" y="229"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cartaVerso" width="71" height="100"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

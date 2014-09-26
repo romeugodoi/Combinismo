@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *notificacaoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *reiniciarJogoButton;
 
+// UIKit Dynamics
+@property (strong, nonatomic) UIDynamicAnimator *animador;
+@property (strong, nonatomic) UIGravityBehavior *gravidade;
+
 @end
 
 @implementation JogoDeCartasViewController
@@ -33,6 +37,20 @@
     if (!_jogo) _jogo = [[JogoDeCombinacaoDeCartas alloc] initComContagemDeCartas:self.cartasView.count
                                                                     usandoBaralho:[BaralhoDeJogo new]];
     return _jogo;
+}
+
+- (UIDynamicAnimator *)animador
+{
+    if (!_animador) {
+        _animador = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    }
+    return _animador;
+}
+
+- (UIGravityBehavior *)gravidade
+{
+    if (!_gravidade) _gravidade = [[UIGravityBehavior alloc] init];
+    return _gravidade;
 }
 
 #pragma mark - Métodos privados
@@ -50,6 +68,26 @@
     self.reiniciarJogoButton.hidden = NO;
     
     [self atualizarUI];
+    
+    if (cartaView.isAtiva) {
+        [UIView transitionWithView:cartaView
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        animations:nil
+                        completion:nil];
+    }
+    else {
+        [self desvirarCarta:cartaView];
+    }
+}
+
+- (void)desvirarCarta:(CartaView *)cartaView
+{
+    [UIView transitionWithView:cartaView
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromRight
+                    animations:nil
+                    completion:nil];
 }
 
 - (IBAction)reiniciarJogo:(UIButton *)sender
@@ -71,17 +109,25 @@
         CartaDeJogo *carta = (CartaDeJogo *) [self.jogo cartaNoIndex:i];
         CartaView *cartaView = self.cartasView[i];
         
+        BOOL desvirarCarta = (cartaView.isAtiva && !carta.isEscolhida && !carta.isCombinada);
+        
         cartaView.ativa = carta.isEscolhida;
         cartaView.numero = [CartaDeJogo numerosString][carta.numero];
         cartaView.naipe = carta.naipe;
         
-        
         // A carta já foi combinada, precisamos desabilitá-la
         cartaView.enabled = !(carta.isEscolhida && carta.isCombinada);
+        
+        if (desvirarCarta) {
+            [self desvirarCarta:cartaView];
+        }
+        if (carta.isCombinada) {
+            [self.gravidade addItem:cartaView];
+        }
     }
     
     // Atualiza a pontuação
-    self.pontuacaoLabel.text = [NSString stringWithFormat:@"Pontuação: %lu", self.jogo.pontuacao];
+    self.pontuacaoLabel.text = [NSString stringWithFormat:@"Pontuação: %ld", (long)self.jogo.pontuacao];
 }
 
 - (void)notificacaoRecebida:(NSNotification *)notificacao
@@ -106,6 +152,9 @@
 {
     [super viewWillAppear:animated];
     
+    // Adicionando o Behavior de gravidade ao animador
+    [self.animador addBehavior:self.gravidade];
+    
     // Registando as Notificações do Jogo
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self
@@ -116,7 +165,7 @@
     // Mostramos qual foi a última pontuação do usuário
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSInteger ultimaPontuacao = [ud integerForKey:@"ultimaPontuacao"];
-    self.notificacaoLabel.text = [NSString stringWithFormat:@"Em seu último jogo, você fez %lu pontos!", ultimaPontuacao];
+    self.notificacaoLabel.text = [NSString stringWithFormat:@"Em seu último jogo, você fez %ld pontos!", (long)ultimaPontuacao];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

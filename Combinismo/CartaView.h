@@ -14,5 +14,6 @@ IB_DESIGNABLE
 @property (strong, nonatomic) IBInspectable NSString *naipe;
 @property (strong, nonatomic) IBInspectable NSString *numero;
 @property (nonatomic, getter=isAtiva) IBInspectable BOOL ativa;
+@property (strong, nonatomic) IBInspectable UIImage *fundoCarta;
 
 @end
