@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Jogo De Cartas View Controller-->
@@ -16,19 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pontuação: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z1s-kC-IYm">
-                                <rect key="frame" x="16" y="527" width="288" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Pontuação: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z1s-kC-IYm">
+                                <rect key="frame" x="16" y="527" width="109" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="z1s-kC-IYm" secondAttribute="height" multiplier="109:21" id="GZm-7a-h4o"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rwu-NV-egB">
-                                <rect key="frame" x="5" y="411" width="311" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IaK-kw-tG2" customClass="CartaView">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaK-kw-tG2" customClass="CartaView">
                                 <rect key="frame" x="6" y="28" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IaK-kw-tG2" secondAttribute="height" multiplier="71:100" id="Y99-vS-uAE"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -36,8 +38,11 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="f4L-uU-b5R"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfI-Np-El0" customClass="CartaView">
+                            <view opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfI-Np-El0" customClass="CartaView">
                                 <rect key="frame" x="85" y="28" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VfI-Np-El0" secondAttribute="height" multiplier="71:100" id="PqV-D1-fEt"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -45,8 +50,11 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Zfc-bb-2JF"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q63-iA-SDk" customClass="CartaView">
-                                <rect key="frame" x="164" y="28" width="71" height="100"/>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q63-iA-SDk" customClass="CartaView">
+                                <rect key="frame" x="165" y="28" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Q63-iA-SDk" secondAttribute="height" multiplier="71:100" id="5h9-TM-PoX"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -54,18 +62,23 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4mg-Bt-ZsT"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zIC-yQ-G8n" customClass="CartaView">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIC-yQ-G8n" customClass="CartaView">
                                 <rect key="frame" x="243" y="28" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zIC-yQ-G8n" secondAttribute="height" multiplier="71:100" id="mhe-Eq-t27"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="ativa" value="NO"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ea6-Hx-FxI"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q33-7c-HhT" customClass="CartaView">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q33-7c-HhT" customClass="CartaView">
                                 <rect key="frame" x="5" y="136" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="q33-7c-HhT" secondAttribute="height" multiplier="71:100" id="Lpu-bO-UOe"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -73,8 +86,11 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="S7C-JY-bl8"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0d-md-s0T" customClass="CartaView">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0d-md-s0T" customClass="CartaView">
                                 <rect key="frame" x="84" y="136" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="E0d-md-s0T" secondAttribute="height" multiplier="71:100" id="jOF-sd-NCi"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -82,8 +98,11 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Iz2-Hb-Pt0"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jMU-gP-Kw2" customClass="CartaView">
-                                <rect key="frame" x="163" y="136" width="71" height="100"/>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMU-gP-Kw2" customClass="CartaView">
+                                <rect key="frame" x="164" y="136" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jMU-gP-Kw2" secondAttribute="height" multiplier="71:100" id="VWE-0J-Qiv"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -91,8 +110,11 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yzE-x5-Sot"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22J-Ek-Giy" customClass="CartaView">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22J-Ek-Giy" customClass="CartaView">
                                 <rect key="frame" x="242" y="136" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="22J-Ek-Giy" secondAttribute="height" multiplier="71:100" id="ku9-4I-Q7P"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -100,17 +122,24 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dug-yI-FQt"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KLI-Hk-qFc" customClass="CartaView">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLI-Hk-qFc" customClass="CartaView">
                                 <rect key="frame" x="6" y="244" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KLI-Hk-qFc" secondAttribute="height" multiplier="71:100" id="JqI-b9-v9m"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="ativa" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9zT-0c-CvG"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivp-mM-k20" customClass="CartaView">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivp-mM-k20" customClass="CartaView">
                                 <rect key="frame" x="85" y="244" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ivp-mM-k20" secondAttribute="height" multiplier="71:100" id="E5k-fz-B2Z"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -118,8 +147,11 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7yp-P3-GVA"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16p-Ae-vW9" customClass="CartaView">
-                                <rect key="frame" x="164" y="244" width="71" height="100"/>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16p-Ae-vW9" customClass="CartaView">
+                                <rect key="frame" x="165" y="244" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="16p-Ae-vW9" secondAttribute="height" multiplier="71:100" id="GzF-8m-omy"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -127,8 +159,11 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="AZT-F3-ss6"/>
                                 </connections>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFa-SR-Gbp" customClass="CartaView">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yFa-SR-Gbp" customClass="CartaView">
                                 <rect key="frame" x="243" y="244" width="71" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yFa-SR-Gbp" secondAttribute="height" multiplier="71:100" id="v0s-cG-set"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fundoCarta" value="cartaVerso"/>
                                 </userDefinedRuntimeAttributes>
@@ -136,8 +171,21 @@
                                     <action selector="virarCarta:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PxQ-mu-mBS"/>
                                 </connections>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhN-QE-YfH">
-                                <rect key="frame" x="209" y="523" width="104" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rwu-NV-egB">
+                                <rect key="frame" x="6" y="382" width="307" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rwu-NV-egB" secondAttribute="height" multiplier="362:21" constant="-3.2857142857142776" id="sTj-Ja-mN1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhN-QE-YfH">
+                                <rect key="frame" x="229" y="523" width="84" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="104" id="F8H-MB-8vM"/>
+                                    <constraint firstAttribute="height" constant="30" id="dB9-Vz-70X"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="🔃 Reiniciar">
@@ -149,6 +197,53 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="jMU-gP-Kw2" firstAttribute="centerY" secondItem="E0d-md-s0T" secondAttribute="centerY" id="138-ae-Eda"/>
+                            <constraint firstItem="jMU-gP-Kw2" firstAttribute="top" secondItem="Q63-iA-SDk" secondAttribute="bottom" constant="8" id="1vB-jE-2Wo"/>
+                            <constraint firstItem="Q63-iA-SDk" firstAttribute="top" secondItem="zIC-yQ-G8n" secondAttribute="top" id="3e0-BI-KMK"/>
+                            <constraint firstItem="16p-Ae-vW9" firstAttribute="leading" secondItem="ivp-mM-k20" secondAttribute="trailing" constant="9" id="584-bB-gus"/>
+                            <constraint firstItem="22J-Ek-Giy" firstAttribute="top" secondItem="zIC-yQ-G8n" secondAttribute="bottom" constant="8" id="6Ok-XH-Hiu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yFa-SR-Gbp" secondAttribute="trailing" constant="-10" id="6av-17-uRt"/>
+                            <constraint firstItem="E0d-md-s0T" firstAttribute="leading" secondItem="q33-7c-HhT" secondAttribute="trailing" constant="8" id="6uZ-dJ-FcK"/>
+                            <constraint firstItem="Q63-iA-SDk" firstAttribute="top" secondItem="VfI-Np-El0" secondAttribute="top" id="BqA-c6-51v"/>
+                            <constraint firstItem="jMU-gP-Kw2" firstAttribute="centerY" secondItem="22J-Ek-Giy" secondAttribute="centerY" id="DnM-zx-2CO"/>
+                            <constraint firstItem="Q63-iA-SDk" firstAttribute="centerY" secondItem="zIC-yQ-G8n" secondAttribute="centerY" id="G39-a2-x4c"/>
+                            <constraint firstItem="yFa-SR-Gbp" firstAttribute="top" secondItem="22J-Ek-Giy" secondAttribute="bottom" constant="8" id="G3C-eb-2ng"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zIC-yQ-G8n" secondAttribute="trailing" constant="-10" id="H5c-kI-YXE"/>
+                            <constraint firstItem="Q63-iA-SDk" firstAttribute="centerY" secondItem="VfI-Np-El0" secondAttribute="centerY" id="IGW-Ra-Drk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="22J-Ek-Giy" secondAttribute="trailing" constant="-9" id="Lg0-xM-4Hf"/>
+                            <constraint firstItem="yFa-SR-Gbp" firstAttribute="leading" secondItem="16p-Ae-vW9" secondAttribute="trailing" constant="7" id="LqG-C5-QTr"/>
+                            <constraint firstItem="ivp-mM-k20" firstAttribute="leading" secondItem="KLI-Hk-qFc" secondAttribute="trailing" constant="8" id="Msa-gn-B6r"/>
+                            <constraint firstItem="22J-Ek-Giy" firstAttribute="leading" secondItem="jMU-gP-Kw2" secondAttribute="trailing" constant="7" id="NWr-xk-iHW"/>
+                            <constraint firstItem="z1s-kC-IYm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Pon-pP-ac2"/>
+                            <constraint firstItem="E0d-md-s0T" firstAttribute="centerY" secondItem="q33-7c-HhT" secondAttribute="centerY" id="Q31-b3-1Oh"/>
+                            <constraint firstItem="E0d-md-s0T" firstAttribute="top" secondItem="VfI-Np-El0" secondAttribute="bottom" constant="8" id="S4B-v4-NaS"/>
+                            <constraint firstItem="16p-Ae-vW9" firstAttribute="top" secondItem="jMU-gP-Kw2" secondAttribute="bottom" constant="8" id="U6K-hR-gjn"/>
+                            <constraint firstItem="IaK-kw-tG2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-10" id="X9b-Zt-8oa"/>
+                            <constraint firstItem="jMU-gP-Kw2" firstAttribute="leading" secondItem="E0d-md-s0T" secondAttribute="trailing" constant="9" id="YCj-fW-dJy"/>
+                            <constraint firstItem="IaK-kw-tG2" firstAttribute="top" secondItem="TqJ-3s-X9s" secondAttribute="bottom" constant="8" id="Zih-Nw-m81"/>
+                            <constraint firstItem="KLI-Hk-qFc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-10" id="Zsy-VZ-RXi"/>
+                            <constraint firstItem="KLI-Hk-qFc" firstAttribute="top" secondItem="q33-7c-HhT" secondAttribute="bottom" constant="8" id="aGh-lX-GSL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rwu-NV-egB" secondAttribute="trailing" constant="-9" id="alH-IV-u9T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BhN-QE-YfH" secondAttribute="trailing" constant="-9" id="aod-Jg-1BW"/>
+                            <constraint firstItem="q33-7c-HhT" firstAttribute="top" secondItem="IaK-kw-tG2" secondAttribute="bottom" constant="8" id="c2h-gs-9tp"/>
+                            <constraint firstItem="VfI-Np-El0" firstAttribute="centerY" secondItem="IaK-kw-tG2" secondAttribute="centerY" id="dZB-v8-DJa"/>
+                            <constraint firstItem="KLI-Hk-qFc" firstAttribute="centerY" secondItem="ivp-mM-k20" secondAttribute="centerY" id="eHN-88-9JI"/>
+                            <constraint firstItem="oku-Bm-R4c" firstAttribute="top" secondItem="z1s-kC-IYm" secondAttribute="bottom" constant="20" id="eOl-wV-J5M"/>
+                            <constraint firstItem="BhN-QE-YfH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="z1s-kC-IYm" secondAttribute="trailing" priority="900" constant="20" id="gVP-lO-t9b"/>
+                            <constraint firstItem="BhN-QE-YfH" firstAttribute="centerY" secondItem="z1s-kC-IYm" secondAttribute="centerY" constant="0.5" id="mEF-tL-ZnJ"/>
+                            <constraint firstItem="16p-Ae-vW9" firstAttribute="centerY" secondItem="ivp-mM-k20" secondAttribute="centerY" id="ore-2O-Ry5"/>
+                            <constraint firstItem="yFa-SR-Gbp" firstAttribute="centerY" secondItem="16p-Ae-vW9" secondAttribute="centerY" id="r2G-z6-wWg"/>
+                            <constraint firstItem="rwu-NV-egB" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-10" id="rpg-lL-Spf"/>
+                            <constraint firstItem="zIC-yQ-G8n" firstAttribute="leading" secondItem="Q63-iA-SDk" secondAttribute="trailing" constant="7" id="s6T-6P-jBO"/>
+                            <constraint firstItem="oku-Bm-R4c" firstAttribute="top" secondItem="BhN-QE-YfH" secondAttribute="bottom" constant="15" id="tfb-is-Od2"/>
+                            <constraint firstItem="rwu-NV-egB" firstAttribute="top" secondItem="KLI-Hk-qFc" secondAttribute="bottom" constant="38" id="tm1-Y4-D6Y"/>
+                            <constraint firstItem="Q63-iA-SDk" firstAttribute="leading" secondItem="VfI-Np-El0" secondAttribute="trailing" constant="9" id="w5g-Td-PEn"/>
+                            <constraint firstItem="ivp-mM-k20" firstAttribute="top" secondItem="E0d-md-s0T" secondAttribute="bottom" constant="8" id="xY1-ti-9GR"/>
+                            <constraint firstItem="q33-7c-HhT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-11" id="xdI-ph-3qQ"/>
+                            <constraint firstItem="VfI-Np-El0" firstAttribute="top" secondItem="IaK-kw-tG2" secondAttribute="top" id="yrQ-dd-4iB"/>
+                            <constraint firstItem="VfI-Np-El0" firstAttribute="leading" secondItem="IaK-kw-tG2" secondAttribute="trailing" constant="8" id="zPT-Eb-qB0"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="notificacaoLabel" destination="rwu-NV-egB" id="IdA-XD-CrF"/>
@@ -170,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10" y="229"/>
+            <point key="canvasLocation" x="9.5" y="227.5"/>
         </scene>
     </scenes>
     <resources>

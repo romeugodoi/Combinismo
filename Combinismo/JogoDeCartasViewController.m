@@ -41,9 +41,7 @@
 
 - (UIDynamicAnimator *)animador
 {
-    if (!_animador) {
-        _animador = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-    }
+    if (!_animador) _animador = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     return _animador;
 }
 
@@ -53,7 +51,7 @@
     return _gravidade;
 }
 
-#pragma mark - Métodos privados
+#pragma mark - IBActions
 
 /**
  *  Vira a carta, e pede para atualizar a UI
@@ -81,6 +79,24 @@
     }
 }
 
+- (IBAction)reiniciarJogo:(UIButton *)sender
+{
+    self.jogo = nil;
+    self.pontuacaoLabel.text = @"Pontuação: 0";
+    self.notificacaoLabel.text = @"";
+    self.reiniciarJogoButton.hidden = YES;
+    
+    // Restaura as cartas de volta ao jogo
+    [self restaurarCartas];
+}
+
+#pragma mark - Métodos privados
+
+/**
+ *  Desvira a carta com rotação para a esquerda
+ *
+ *  @param cartaView Carta a ser desvirada
+ */
 - (void)desvirarCarta:(CartaView *)cartaView
 {
     [UIView transitionWithView:cartaView
@@ -90,13 +106,36 @@
                     completion:nil];
 }
 
-- (IBAction)reiniciarJogo:(UIButton *)sender
+/**
+ *  Derruba a Carta usando Behaviour de gravidade. Usado quando as cartas combinam
+ *
+ *  @param cartaView Carta a ser derrubada do jogo
+ */
+- (void)derrubarCarta:(CartaView *)cartaView
 {
-    self.jogo= nil;
-    self.pontuacaoLabel.text = self.notificacaoLabel.text = @"";
-    self.reiniciarJogoButton.hidden = YES;
-    
-    [self atualizarUI];
+    [self.gravidade addItem:cartaView];
+}
+
+/**
+ *  Restaura as cartas de volta ao jogo
+ */
+- (void)restaurarCartas
+{
+    for (CartaView *cartaView in self.cartasView) {
+        [UIView animateWithDuration:0.2
+                         animations:^{
+                             cartaView.enabled = YES;
+                             cartaView.ativa = NO;
+                             cartaView.alpha = 0.0;
+                             
+                             [self.gravidade removeItem:cartaView];
+                         } completion:^(BOOL finished) {
+                             
+                             [UIView animateWithDuration:0.2 animations:^{
+                                 cartaView.alpha = 1.0;
+                             } completion:nil];
+                         }];
+    }
 }
 
 /**
@@ -109,20 +148,24 @@
         CartaDeJogo *carta = (CartaDeJogo *) [self.jogo cartaNoIndex:i];
         CartaView *cartaView = self.cartasView[i];
         
+        // Precisamos saber se será preciso desvirar a carta antes de alterá-la
         BOOL desvirarCarta = (cartaView.isAtiva && !carta.isEscolhida && !carta.isCombinada);
         
+        // Atualizamos a cartaView atual
         cartaView.ativa = carta.isEscolhida;
         cartaView.numero = [CartaDeJogo numerosString][carta.numero];
         cartaView.naipe = carta.naipe;
         
-        // A carta já foi combinada, precisamos desabilitá-la
+        // A carta já foi combinada, então precisamos desabilitá-la
         cartaView.enabled = !(carta.isEscolhida && carta.isCombinada);
         
         if (desvirarCarta) {
             [self desvirarCarta:cartaView];
         }
+        
+        // Cartas combinadas precisam ser "derrubadas" do jogo. ;)
         if (carta.isCombinada) {
-            [self.gravidade addItem:cartaView];
+            [self derrubarCarta:cartaView];
         }
     }
     

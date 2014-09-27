@@ -7,67 +7,8 @@
 //
 
 #import "CartaView.h"
-#import <objc/runtime.h>
 
 @implementation CartaView
-
-//+ (BOOL)resolveInstanceMethod:(SEL)aSEL
-//{
-//    if (aSEL == @selector(resolveThisMethodDynamically)) {
-//        class_addMethod([self class], aSEL, (IMP) dynamicMethodIMP, "v@:");
-//        return YES;
-//    }
-//    return [super resolveInstanceMethod:aSEL];
-//}
-
-
-//- (void)replaceSetters {
-//    unsigned int numberOfProperties;
-//    objc_property_t *propertyArray = class_copyPropertyList([self class], &numberOfProperties);
-//    for (NSUInteger i = 0; i < numberOfProperties; i++) {
-//        objc_property_t property = propertyArray[i];
-//        const char *attrs = property_getAttributes(property);
-//        NSString *name = [[NSString alloc] initWithUTF8String:property_getName(property)];
-//        NSLog(@"aqui");
-////        property.setter = SEL; //?
-//        // becomes
-////        class_replaceMethod([self class], NSSelectorFromString(name), (IMP)property, attrs);
-//    }
-//}
-
-// generic getter
-//static id propertyIMP(id self, SEL _cmd)
-//{
-//    return [[self properties] valueForKey:NSStringFromSelector(_cmd)];
-//}
-//
-//// generic setter
-//static void setPropertyIMP(id self, SEL _cmd, id aValue)
-//{
-//    
-//    id value = [aValue copy];
-//    NSMutableString *key = [NSStringFromSelector(_cmd) mutableCopy];
-//    
-//    // delete "set" and ":" and lowercase first letter
-//    [key deleteCharactersInRange:NSMakeRange(0, 3)];
-//    [key deleteCharactersInRange:NSMakeRange([key length] - 1, 1)];
-//    NSString *firstChar = [key substringToIndex:1];
-//    [key replaceCharactersInRange:NSMakeRange(0, 1) withString:[firstChar lowercaseString]];
-//    
-//    [[self properties] setValue:value forKey:key];
-//    
-////    [self setNeedsDisplay];
-//}
-//
-//+ (BOOL)resolveInstanceMethod:(SEL)aSEL
-//{
-//    if ([NSStringFromSelector(aSEL) hasPrefix:@"set"]) {
-//        class_addMethod([self class], aSEL, (IMP)setPropertyIMP, "v@:@");
-//    } else {
-//        class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
-//    }
-//    return YES;
-//}
 
 - (void)setNaipe:(NSString *)naipe
 {
@@ -91,6 +32,9 @@
 - (void)setEnabled:(BOOL)enabled
 {
     [super setEnabled:enabled];
+    
+    self.alpha = enabled ? 1.0 : 0.6;
+    
     [self setNeedsDisplay];
 }
 
@@ -103,7 +47,6 @@
 - (void)drawRect:(CGRect)rect
 {
     CGRect frameGlobal = self.bounds;
-    self.alpha = 1.0;
     
     //// General Declarations
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -165,17 +108,13 @@
     }
     else {
         //// Carta Drawing Verso (com a imagem)
-        UIImage* verso = self.fundoCarta;
+        
         UIBezierPath* cartaPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(CGRectGetMinX(frameGlobal), CGRectGetMinY(frameGlobal), CGRectGetWidth(frameGlobal), CGRectGetHeight(frameGlobal)) cornerRadius: 7];
         CGContextSaveGState(context);
         CGContextSetPatternPhase(context, CGSizeMake(0, 0));
-        [[UIColor colorWithPatternImage: verso] setFill];
+        [[UIColor colorWithPatternImage: self.fundoCarta] setFill];
         [cartaPath fill];
         CGContextRestoreGState(context);
-    }
-    
-    if (!self.enabled) {
-        self.alpha = 0.6;
     }
 }
 
