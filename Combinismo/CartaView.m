@@ -24,6 +24,15 @@
 
 - (void)setAtiva:(BOOL)ativa
 {
+    if (ativa != _ativa) {
+        if (ativa) {
+            [self viraCarta];
+        }
+        else {
+            [self desviraCarta];
+        }
+    }
+    
     _ativa = ativa;
     
     [self setNeedsDisplay];
@@ -42,6 +51,27 @@
 {
     if (!_fundoCarta) _fundoCarta = [UIImage imageNamed: @"cartaVerso"];
     return _fundoCarta;
+}
+
+- (void)viraCarta
+{
+    [UIView transitionWithView:self
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:nil
+                    completion:nil];
+}
+
+/**
+ *  Desvira a carta com rotação para a esquerda
+ */
+- (void)desviraCarta
+{
+    [UIView transitionWithView:self
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromRight
+                    animations:nil
+                    completion:nil];
 }
 
 - (void)drawRect:(CGRect)rect

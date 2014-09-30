@@ -11,6 +11,8 @@
 
 @interface JogoDeCartasViewController : UIViewController
 
-- (IBAction)virarCarta:(CartaView *)cartaView;
+- (void)derrubarCarta:(CartaView *)cartaView;
+- (void)restaurarCartasDerrubadas;
+- (void)atualizarUI;
 
 @end

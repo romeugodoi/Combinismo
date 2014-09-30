@@ -25,6 +25,7 @@ static const int CUSTO_PARA_ESCOLHER = 1;
 
 // Canais de Notificação
 NSString * const JogoDeCombinacaoDeCartasCartasCombinadasNotification = @"br.com.cocoaheads.JogoDeCombinacaoDeCartasCartasCombinadasNotification";
+NSString * const JogoDeCombinacaoDeCartasGameOverNotification = @"br.com.cocoaheads.JogoDeCombinacaoDeCartasGameOverNotification";
 
 
 #pragma mark - Inicializadores Designados
@@ -120,14 +121,52 @@ NSString * const JogoDeCombinacaoDeCartasCartasCombinadasNotification = @"br.com
             
             // Debita o custo por escolher
             self.pontuacao -= CUSTO_PARA_ESCOLHER;
-            carta.escolhida = YES;
+            carta.escolhida = YES;            
         }
     }
+    [self validarContinuidadeDoJogo];
 }
 
 - (Carta *)cartaNoIndex:(NSUInteger)index
 {
     return index < self.cartas.count ? self.cartas[index] : nil;
+}
+
+- (BOOL)validarContinuidadeDoJogo
+{
+    NSArray *cartas = [self cartasRestantes];
+    
+    if (cartas.count <= 4) {
+        for (Carta *carta in cartas) {
+            for (Carta *outraCarta in cartas) {
+                if (![carta isEqual:outraCarta] && [carta combinar:@[outraCarta]]) {
+                    return YES;
+                }
+            }
+        }
+        
+        [self postarNotificacaoDeGameOver:cartas];
+        return NO;
+    }
+    return YES;
+}
+
+/**
+ *  Faz a busca das cartas que ainda não foram combinadas
+ *
+ *  @return Cartas que não foram combinadas
+ */
+- (NSArray *)cartasRestantes
+{
+    NSMutableArray *cartasRestantes = [NSMutableArray new];
+    
+    [self.cartas enumerateObjectsUsingBlock:^(Carta *carta, NSUInteger idx, BOOL *stop) {
+        if (!carta.isCombinada) {
+            [cartasRestantes addObject:carta];
+        }
+    }];
+    
+    return [(NSArray *) cartasRestantes copy];
 }
 
 - (void)postarNotificacaoDeCombinacaoDaCarta:(Carta *)cartaA comACarta:(Carta *)cartaB comSaldo:(NSNumber *)saldo
@@ -136,6 +175,14 @@ NSString * const JogoDeCombinacaoDeCartasCartasCombinadasNotification = @"br.com
     [nc postNotificationName:JogoDeCombinacaoDeCartasCartasCombinadasNotification
                       object:self
                     userInfo:@{ @"cartaA": cartaA, @"cartaB": cartaB, @"saldo": saldo }];
+}
+
+- (void)postarNotificacaoDeGameOver:(NSArray *)cartasRestantes
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:JogoDeCombinacaoDeCartasGameOverNotification
+                      object:self
+                    userInfo:@{ @"cartasRestantes": cartasRestantes }];
 }
 
 @end

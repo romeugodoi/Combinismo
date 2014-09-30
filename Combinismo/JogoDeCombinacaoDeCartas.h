@@ -16,12 +16,15 @@
 
 // Canais de Notificação
 extern NSString * const JogoDeCombinacaoDeCartasCartasCombinadasNotification;
+extern NSString * const JogoDeCombinacaoDeCartasGameOverNotification;
 
 // inicializador que deve ser utilizado! (Designated initializer)
 - (instancetype) initComContagemDeCartas:(NSUInteger)contagem usandoBaralho:(Baralho *)baralho;
 
-- (void) escolherCartaNoIndex:(NSUInteger)index;
-- (Carta *) cartaNoIndex:(NSUInteger)index;
+- (void)escolherCartaNoIndex:(NSUInteger)index;
+- (Carta *)cartaNoIndex:(NSUInteger)index;
+- (BOOL)validarContinuidadeDoJogo;
 - (void)postarNotificacaoDeCombinacaoDaCarta:(Carta *)cartaA comACarta:(Carta *)cartaB comSaldo:(NSNumber *)saldo;
+- (void)postarNotificacaoDeGameOver:(NSArray *)cartasRestantes;
 
 @end

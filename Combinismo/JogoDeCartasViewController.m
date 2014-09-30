@@ -66,20 +66,9 @@
     self.reiniciarJogoButton.hidden = NO;
     
     [self atualizarUI];
-    
-    if (cartaView.isAtiva) {
-        [UIView transitionWithView:cartaView
-                          duration:0.5
-                           options:UIViewAnimationOptionTransitionFlipFromLeft
-                        animations:nil
-                        completion:nil];
-    }
-    else {
-        [self desvirarCarta:cartaView];
-    }
 }
 
-- (IBAction)reiniciarJogo:(UIButton *)sender
+- (IBAction)reiniciarJogo:(UIButton *)reiniciarButton
 {
     self.jogo = nil;
     self.pontuacaoLabel.text = @"Pontuação: 0";
@@ -87,24 +76,11 @@
     self.reiniciarJogoButton.hidden = YES;
     
     // Restaura as cartas de volta ao jogo
-    [self restaurarCartas];
+    [self atualizarUI];
+    [self restaurarCartasDerrubadas];
 }
 
 #pragma mark - Métodos privados
-
-/**
- *  Desvira a carta com rotação para a esquerda
- *
- *  @param cartaView Carta a ser desvirada
- */
-- (void)desvirarCarta:(CartaView *)cartaView
-{
-    [UIView transitionWithView:cartaView
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionFlipFromRight
-                    animations:nil
-                    completion:nil];
-}
 
 /**
  *  Derruba a Carta usando Behaviour de gravidade. Usado quando as cartas combinam
@@ -119,19 +95,18 @@
 /**
  *  Restaura as cartas de volta ao jogo
  */
-- (void)restaurarCartas
+- (void)restaurarCartasDerrubadas
 {
     for (CartaView *cartaView in self.cartasView) {
-        [UIView animateWithDuration:0.2
-                         animations:^{
-                             cartaView.enabled = YES;
-                             cartaView.ativa = NO;
-                             cartaView.alpha = 0.0;
+
+        [self.gravidade removeItem:cartaView];
+        
+        cartaView.alpha = 0.0;
+        [UIView animateWithDuration:0.5
+                         animations:nil
+                         completion:^(BOOL finished) {
                              
-                             [self.gravidade removeItem:cartaView];
-                         } completion:^(BOOL finished) {
-                             
-                             [UIView animateWithDuration:0.2 animations:^{
+                             [UIView animateWithDuration:0.5 animations:^{
                                  cartaView.alpha = 1.0;
                              } completion:nil];
                          }];
@@ -148,9 +123,6 @@
         CartaDeJogo *carta = (CartaDeJogo *) [self.jogo cartaNoIndex:i];
         CartaView *cartaView = self.cartasView[i];
         
-        // Precisamos saber se será preciso desvirar a carta antes de alterá-la
-        BOOL desvirarCarta = (cartaView.isAtiva && !carta.isEscolhida && !carta.isCombinada);
-        
         // Atualizamos a cartaView atual
         cartaView.ativa = carta.isEscolhida;
         cartaView.numero = [CartaDeJogo numerosString][carta.numero];
@@ -158,10 +130,6 @@
         
         // A carta já foi combinada, então precisamos desabilitá-la
         cartaView.enabled = !(carta.isEscolhida && carta.isCombinada);
-        
-        if (desvirarCarta) {
-            [self desvirarCarta:cartaView];
-        }
         
         // Cartas combinadas precisam ser "derrubadas" do jogo. ;)
         if (carta.isCombinada) {
@@ -173,7 +141,7 @@
     self.pontuacaoLabel.text = [NSString stringWithFormat:@"Pontuação: %ld", (long)self.jogo.pontuacao];
 }
 
-- (void)notificacaoRecebida:(NSNotification *)notificacao
+- (void)notificacaoDeCartasCombinadasRecebida:(NSNotification *)notificacao
 {
     Carta *cartaA = notificacao.userInfo[@"cartaA"];
     Carta *cartaB = notificacao.userInfo[@"cartaB"];
@@ -189,6 +157,28 @@
     }
 }
 
+- (void)notificacaoDeGameOverRecebida:(NSNotification *)notificacao
+{
+    NSArray *cartasRestantes = notificacao.userInfo[@"cartasRestantes"];
+    
+    // Checa se o usuário zerou o jogo!!
+    NSString *msg = cartasRestantes.count == 0 ? @"Parabéns!!!!! Vocë está com sorte!" : @"Fim de Jogo!";
+    
+    UIAlertView *alertGameOver = [[UIAlertView alloc] initWithTitle:@"Opa!!!"
+                                                            message:[msg stringByAppendingString:@"\nDeseja reiniciar o jogo?"]
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Não"
+                                                  otherButtonTitles:@"Sim", nil];
+    [alertGameOver show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self reiniciarJogo:nil];
+    }
+}
+
 #pragma mark - Ciclos de vida do Controller
 
 - (void)viewWillAppear:(BOOL)animated
@@ -201,14 +191,19 @@
     // Registando as Notificações do Jogo
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self
-           selector:@selector(notificacaoRecebida:)
+           selector:@selector(notificacaoDeCartasCombinadasRecebida:)
                name:JogoDeCombinacaoDeCartasCartasCombinadasNotification
+             object:self.jogo];
+
+    [nc addObserver:self
+           selector:@selector(notificacaoDeGameOverRecebida:)
+               name:JogoDeCombinacaoDeCartasGameOverNotification
              object:self.jogo];
     
     // Mostramos qual foi a última pontuação do usuário
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSInteger ultimaPontuacao = [ud integerForKey:@"ultimaPontuacao"];
-    self.notificacaoLabel.text = [NSString stringWithFormat:@"Em seu último jogo, você fez %ld pontos!", (long)ultimaPontuacao];
+    self.notificacaoLabel.text = [NSString stringWithFormat:@"Em seu último jogo, você fez %ld ponto(s)!", (long)ultimaPontuacao];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
